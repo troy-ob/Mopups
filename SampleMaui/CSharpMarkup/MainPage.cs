@@ -3,7 +3,7 @@ using AsyncAwaitBestPractices.MVVM;
 using Mopups.Animations.Base;
 using Mopups.Pages;
 using Mopups.Services;
-
+using SampleMaui.XAML;
 using SampleMopups.XAML;
 
 using Button = Microsoft.Maui.Controls.Button;
@@ -52,15 +52,17 @@ public partial class MainPage : ContentPage
         mainStackLayout.Add(GeneratePopupButton("Open Aswins Popup", GenerateSimpleCommandForPopup<AswinPage>()));
         var newButton = new Button
                         {
-                            Text = "Switch To Prebaked Examples",
+                            Text = "go to modal page",
                             BackgroundColor = Color.FromArgb("#FF7DBBE6"),
                             TextColor = Color.FromRgb(255, 255, 255),
                             Command = new AsyncCommand(async () =>
                                                        {
-                                                           await Navigation.PushAsync(new PreBakedExample());
+                                                           await Navigation.PushModalAsync(new TestPage());
                                                        })
                         };
         mainStackLayout.Add(newButton);
+
+        // Navigation.PushModalAsync(new TestPage());
 
         return mainStackLayout;
 
